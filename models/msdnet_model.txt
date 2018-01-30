@@ -1,0 +1,1073 @@
+modules flops sum:  5603328.0
+Starting.. FLOPs: 148.01M, Params: 5.44M
+| MSDNet-Block 10-2-cifar10
+Building network with the steps: [4, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+|-----------------Block 01----------------|
+|         First layer without GCN         |
+| Layer 01 input scales 3 output scales 3 |
+| Layer 02 input scales 3 output scales 3 |
+| Layer 03 input scales 3 output scales 3 |
+| Layer 04 input scales 3 output scales 3 |
+|-----------------Block 02----------------|
+| Layer 05 input scales 3 output scales 3 |
+| Layer 06 input scales 3 output scales 3 |
+|-----------------Block 03----------------|
+| Layer 07 input scales 3 output scales 3 |
+| Layer 08 input scales 3 output scales 3 |
+|-----------------Block 04----------------|
+| Layer 09 input scales 3 output scales 2 |
+|      Transition layer 1 was added!      |
+| Layer 10 input scales 2 output scales 2 |
+|-----------------Block 05----------------|
+| Layer 11 input scales 2 output scales 2 |
+| Layer 12 input scales 2 output scales 2 |
+|-----------------Block 06----------------|
+| Layer 13 input scales 2 output scales 2 |
+| Layer 14 input scales 2 output scales 2 |
+|-----------------Block 07----------------|
+| Layer 15 input scales 2 output scales 2 |
+| Layer 16 input scales 2 output scales 2 |
+|-----------------Block 08----------------|
+| Layer 17 input scales 2 output scales 1 |
+|      Transition layer 2 was added!      |
+| Layer 18 input scales 1 output scales 1 |
+|-----------------Block 09----------------|
+| Layer 19 input scales 1 output scales 1 |
+| Layer 20 input scales 1 output scales 1 |
+|-----------------Block 10----------------|
+| Layer 21 input scales 1 output scales 1 |
+| Layer 22 input scales 1 output scales 1 |
+MSDNet(
+  (subnets): ModuleList(
+    (0): Sequential(
+      (MSD_first): MSDFirstLayer(
+        (subnets): ModuleList(
+          (0): Sequential(
+            (0): Conv2d (3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True)
+            (2): ReLU(inplace)
+          )
+          (1): Sequential(
+            (0): Conv2d (32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True)
+            (2): ReLU(inplace)
+          )
+          (2): Sequential(
+            (0): Conv2d (64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+            (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+            (2): ReLU(inplace)
+          )
+        )
+      )
+      (MSD_layer_1): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (32, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (32, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (64, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (64, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (128, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_2): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (38, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (38, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (76, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (76, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (152, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_3): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (44, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (44, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (88, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (88, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (176, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_4): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (50, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (50, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (100, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (100, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (200, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (1): Sequential(
+      (MSD_layer_5): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (56, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (56, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (112, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (112, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (224, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_6): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (62, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (62, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (124, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (124, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (248, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (2): Sequential(
+      (MSD_layer_7): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (68, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (68, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (136, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (136, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (272, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_8): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (74, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (6, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (74, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (148, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (2): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (148, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (296, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (3): Sequential(
+      (MSD_layer_9): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (80, 6, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (6, 6, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (160, 12, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (12, 6, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(6, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (160, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (320, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (Transition): Transition(
+        (scales): ModuleList(
+          (0): Sequential(
+            (0): Conv2d (172, 86, kernel_size=(1, 1), stride=(1, 1))
+            (1): BatchNorm2d(86, eps=1e-05, momentum=0.1, affine=True)
+            (2): ReLU(inplace)
+          )
+          (1): Sequential(
+            (0): Conv2d (344, 172, kernel_size=(1, 1), stride=(1, 1))
+            (1): BatchNorm2d(172, eps=1e-05, momentum=0.1, affine=True)
+            (2): ReLU(inplace)
+          )
+        )
+      )
+      (MSD_layer_10): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (86, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (24, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (86, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (172, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (4): Sequential(
+      (MSD_layer_11): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (98, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (24, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (98, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (196, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_12): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (110, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (24, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (110, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (220, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (5): Sequential(
+      (MSD_layer_13): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (122, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (24, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (122, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (244, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_14): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (134, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (24, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (134, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (268, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (6): Sequential(
+      (MSD_layer_15): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (146, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (24, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (146, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (292, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_16): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (158, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (24, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+          (1): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (158, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (316, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (7): Sequential(
+      (MSD_layer_17): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (170, 24, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_down): Conv2d (24, 12, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+              (1): Sequential(
+                (Bottleneck_1x1): Conv2d (340, 48, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (Transition): Transition(
+        (scales): ModuleList(
+          (0): Sequential(
+            (0): Conv2d (364, 180, kernel_size=(1, 1), stride=(1, 1))
+            (1): BatchNorm2d(180, eps=1e-05, momentum=0.1, affine=True)
+            (2): ReLU(inplace)
+          )
+        )
+      )
+      (MSD_layer_18): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (180, 96, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (8): Sequential(
+      (MSD_layer_19): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (204, 96, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_20): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (228, 96, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (9): Sequential(
+      (MSD_layer_21): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (252, 96, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+      (MSD_layer_22): MSDLayer(
+        (subnets): ModuleList(
+          (0): _DynamicInputDenseBlock(
+            (conv_modules): ModuleList(
+              (0): Sequential(
+                (Bottleneck_1x1): Conv2d (276, 96, kernel_size=(1, 1), stride=(1, 1))
+                (Bottleneck_BN): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True)
+                (Bottleneck_ReLU): ReLU(inplace)
+                (Spatial_forward): Conv2d (96, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                (BN_out): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True)
+                (ReLU_out): ReLU(inplace)
+              )
+            )
+          )
+        )
+      )
+    )
+    (10): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (224, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (11): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (272, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (12): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (320, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (13): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (196, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (14): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (244, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (15): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (292, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (16): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (340, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (17): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (204, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (18): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (252, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+    (19): CifarClassifier(
+      (features): Sequential(
+        (0): Conv2d (300, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (2): ReLU(inplace)
+        (3): Conv2d (128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+        (5): ReLU(inplace)
+        (6): AvgPool2d(kernel_size=2, stride=2, padding=0, ceil_mode=False, count_include_pad=True)
+      )
+      (classifier): Linear(in_features=128, out_features=10)
+    )
+  )
+)
