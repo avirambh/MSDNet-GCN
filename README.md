@@ -30,15 +30,16 @@ in order to reduce the model parameters.
 As an example, use the following command to train an MSDNet on Cifar10
 
 ```
-python3 main.py --model msdnet -b 64 -j 2 cifar10 --msd-blocks 10 --msd-base 2
+python3 main.py --model msdnet -b 64 -j 2 cifar10 --msd-blocks 10 --msd-base 4 \
 --msd-step 2 --msd-stepmode even --growth 6-12-24 --gpu 0
 ```
 
 As an example, use the following command to train an MSDNet on Cifar100 with GCN block
 
 ```
-python3 main.py --model msdnet -b 64 -j 2 cifar100 --msd-blocks 10 --msd-base 3
---msd-step 2 --msd-stepmode even --growth 6-12-24 --gpu 0 --msd-gcn --msd-gcn-kernel 5
+python3 main.py --model msdnet -b 64 -j 2 cifar100 --msd-blocks 10 --msd-base 3 \
+--msd-step 1 --msd-stepmode even --growth 6-12-24 --gpu 0  --msd-gcn --msd-gcn-kernel 5 \
+--msd-share-weights --msd-all-gcn
 ```
 
 
@@ -48,8 +49,9 @@ We take the Cifar10 model trained above as an example.
 To evaluate the trained model, use `evaluate` to evaluate from the default checkpoint directory:
 
 ```
-python main.py ---model msdnet -b 64 -j 2 cifar10 --msd-blocks 10 --msd-base 2
---msd-step 2 --msd-stepmode even --growth 6-12-24 --gpu 0 --resume --evaluate
+python3 main.py --model msdnet -b 64 -j 2 cifar100 --msd-blocks 10 --msd-base 3 \
+--msd-step 1 --msd-stepmode even --growth 6-12-24 --gpu 0 --msd-gcn --msd-gcn-kernel 5 \
+--msd-share-weights --msd-all-gcn --resume --evaluate
 ```
 
 

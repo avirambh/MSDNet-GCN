@@ -63,5 +63,5 @@ python3 main.py --model msdnet -b 64  -j 2 cifar10 --msd-blocks 10 --msd-base 2 
 
 # cifar100, all shared gcn, kernel 5, base 3, step 1
 python3 main.py --model msdnet -b 64  -j 2 cifar100 --msd-blocks 10 --msd-base 3 \
---msd-step 1 --msd-stepmode even --growth 6-12-24 --gpu 1  --msd-gcn --msd-gcn-kernel 5 \
+--msd-step 1 --msd-stepmode even --growth 6-12-24 --gpu 0  --msd-gcn --msd-gcn-kernel 5 \
 --msd-share-weights --msd-all-gcn
