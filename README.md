@@ -1,4 +1,4 @@
-# MSDNet - reproducability and applying GCN blocks with separable kernel
+# MSDNet - reproducibility and applying GCN blocks with separable kernel
 
 This repository contains a reproduction code
 (in PyTorch) for
@@ -12,10 +12,10 @@ This repository contains a reproduction code
 ## Introduction
 
 MSDNet is a novel approach fo image classification with computational resource limits
-at test time. this repository provides an implementation based on the technical description
+at test time. This repository provides an implementation based on the technical description
 provided in the paper. Currently this code implements the support for Cifar-10 and Cifar-100.
 
-Moreover, this code integrates the support for GCN based layers instead of normal convulotion layers,
+Moreover, this code integrates the support for GCN based layers instead of normal convolution layers,
 in order to reduce the model parameters.
 
 ## Usage
