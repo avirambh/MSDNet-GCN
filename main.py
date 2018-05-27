@@ -323,11 +323,12 @@ def validate(val_loader, model, criterion):
                   'Prec@5 {top5.val:.3f} ({top5.avg:.3f})'.format(
                       i, len(val_loader), batch_time=batch_time, loss=losses,
                       top1=top1, top5=top5))
-            _, _, (ttop1s, ttop5s) = msdnet_accuracy(output, target, input,
-                                                 val=True)
-            for c in range(0,len(top1_per_cls)):
-                top1_per_cls[c].update(ttop1s[c], input.size(0))
-                top5_per_cls[c].update(ttop5s[c], input.size(0))
+        
+        _, _, (ttop1s, ttop5s) = msdnet_accuracy(output, target, input,
+                                             val=True)
+        for c in range(0,len(top1_per_cls)):
+            top1_per_cls[c].update(ttop1s[c], input.size(0))
+            top5_per_cls[c].update(ttop5s[c], input.size(0))
 
     print(' * Prec@1 {top1.avg:.3f} Prec@5 {top5.avg:.3f}'
           .format(top1=top1, top5=top5))
